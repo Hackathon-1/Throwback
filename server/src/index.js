@@ -5,7 +5,7 @@ import bodyParser from 'body-parser'
 import { insertImage, getImages } from './db'
 
 const app = express()
-app.use(bodyParser.json())
+app.use(bodyParser.json({ limit: '100mb' }))
 
 app.get('/images', function(req, res) {
   const { lon, lat } = req.query
