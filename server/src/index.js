@@ -16,7 +16,7 @@ app.get('/images', function(req, res) {
       .then((images) => res.json(images))
       .catch((err) => console.log(err) || res.status('500').send(err))
   } else {
-    getNearest(parseInt(lon, 10), parseInt(lat, 10))
+    getNearest(parseFloat(lon, 10), parseFloat(lat, 10))
       .then((images) => res.json(images))
       .catch((err) => console.log(err) || res.status('500').send(err))
   }
