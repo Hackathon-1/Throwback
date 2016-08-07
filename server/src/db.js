@@ -17,9 +17,13 @@ export function insertImage({ image, lon, lat, elevation, caption }: Image): Pro
     .run()
 }
 
-export function getImages(lon: number, lat: number): Promise<*> {
+export function getNearest(lon: number, lat: number): Promise<*> {
   return r.table('images')
     .getNearest(r.point(lon, lat), { index: 'location', unit: 'km', maxDist: 1 })
     .without({ doc: 'location' })
     .run()
+}
+
+export function getImages() {
+  return r.table('images').run()
 }

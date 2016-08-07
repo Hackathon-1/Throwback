@@ -3,7 +3,7 @@
 import morgan from 'morgan'
 import express from 'express'
 import bodyParser from 'body-parser'
-import { insertImage, getImages } from './db'
+import { insertImage, getImages, getNearest } from './db'
 
 const app = express()
 app.use(morgan('combined'))
@@ -11,9 +11,15 @@ app.use(bodyParser.json({ limit: '100mb' }))
 
 app.get('/images', function(req, res) {
   const { lon, lat } = req.query
-  getImages(parseInt(lon, 10), parseInt(lat, 10))
-    .then((images) => res.json(images))
-    .catch((err) => console.log(err) || res.status('500').send(err))
+  if (!lon || !lat) {
+    getImages()
+      .then((images) => res.json(images))
+      .catch((err) => console.log(err) || res.status('500').send(err))
+  } else {
+    getNearest(parseInt(lon, 10), parseInt(lat, 10))
+      .then((images) => res.json(images))
+      .catch((err) => console.log(err) || res.status('500').send(err))
+  }
 })
 
 app.post('/images', function(req, res) {
