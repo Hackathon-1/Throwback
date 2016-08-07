@@ -1,0 +1,22 @@
+{
+  "name": "throwback",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-preset-aria": "^1.3.0",
+    "eslint": "^3.2.2",
+    "eslint-config-aria": "^4.0.2",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "rethinkdbdash": "^2.3.19"
+  }
+}
