@@ -1,10 +1,12 @@
 // @flow
 
+import morgan from 'morgan'
 import express from 'express'
 import bodyParser from 'body-parser'
 import { insertImage, getImages } from './db'
 
 const app = express()
+app.use(morgan('combined'))
 app.use(bodyParser.json({ limit: '100mb' }))
 
 app.get('/images', function(req, res) {
